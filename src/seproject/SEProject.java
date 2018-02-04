@@ -5,6 +5,10 @@
  */
 package seproject;
 
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JFrame;
+
 /**
  *
  * @author User1
@@ -16,9 +20,8 @@ public class SEProject {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        MainWindow mw= new MainWindow();
-        mw.setVisible(true);
-        
+        new MainWindow().setVisible(true);
+ 
     }
     
 }

@@ -5,16 +5,16 @@
  */
 package seproject;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author User1
  */
-public class Display {
-    public String nodeColor;
-    public boolean showConnections;
-    public boolean showNotation;
-    public String fontColor;
-    public int fontSize;
+public class Line {
+    Circle circle1;
+    Circle circle2;
+    public Line(Circle circle1, Circle circle2)
+    {
+        this.circle1= circle1;
+        this.circle2= circle2;
+    }
 }
