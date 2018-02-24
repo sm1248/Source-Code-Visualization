@@ -43,8 +43,26 @@ public class FileProcessor {
                     Circle cir1 = new Circle(textLine.split("\t")[0], rand.nextInt(750)+25, rand.nextInt(550)+25, 5 + 1 * (Integer.parseInt(textLine.split("\t")[3])));
                     Circle cir2 = new Circle(textLine.split("\t")[2], rand.nextInt(750)+25, rand.nextInt(550)+25, 5 + 1 * (Integer.parseInt(textLine.split("\t")[3])));
 
-                    circle.add(cir1);
-                    circle.add(cir2);
+                    for (Circle cir : circle)
+                    {
+                        if (cir.name.compareTo(cir1.name)==0)
+                        {
+                            cir1= cir;
+                            break;
+                        }
+                    }
+                    for (Circle cir : circle)
+                    {
+                        if (cir.name.compareTo(cir2.name)==0)
+                        {
+                            cir1= cir;
+                            break;
+                        }
+                    }
+                    if (!circle.contains(cir1)) 
+                        circle.add(cir1);
+                    if (!circle.contains(cir2))
+                        circle.add(cir2);
                     line.add(new Line(cir1, cir2));
                 }
                 first = false;
