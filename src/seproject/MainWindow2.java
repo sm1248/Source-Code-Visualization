@@ -19,13 +19,17 @@ public class MainWindow2 extends javax.swing.JFrame {
 
     JFrame frame;
     Draw draw;
+    ArrayList<Circle> circle;
+    ArrayList<Line> line; 
     /**
      * Creates new form MainWindow2
      */
-    public MainWindow2() {
+    public MainWindow2( ArrayList<Circle> circle, ArrayList<Line> line) {
         initComponents();
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setLocation(0, 0);
+        this.circle= circle;
+        this.line= line;
     }
 
     /**
@@ -144,14 +148,7 @@ public class MainWindow2 extends javax.swing.JFrame {
             frame.setBackground(Color.white);
             frame.setSize(800, 600);
             frame.setLocation(screenSize.width-800, 0);
-            ArrayList<Circle> circle= new ArrayList<Circle>();
-            ArrayList<Line> line= new ArrayList<Line>();
-            for (int i=50; i<700; i+=600)
-            {
-                circle.add(new Circle("test", i,50,50));
-            }
-
-            line.add(new Line(circle.get(0), circle.get(1)));
+            
             draw= new Draw(disModel, circle, line);
 
             frame.getContentPane().add(draw);

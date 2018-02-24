@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 public class MainWindow extends javax.swing.JFrame {
 
     static MainWindow2 mainWindow2;
+    File file;
     /**
      * Creates new form MainWindow
      */
@@ -92,12 +93,15 @@ public class MainWindow extends javax.swing.JFrame {
         JFileChooser fc= new JFileChooser();
         fc.setCurrentDirectory(new File("c:\\"));
         fc.showOpenDialog(null);
-        File file= fc.getSelectedFile();
-        String path= file.getAbsolutePath();
-        jLabel1.setText(path.length()>35? "... " + path.substring(path.length()-35): path);
-        if (file.getAbsoluteFile().getName()!=null && file.getAbsoluteFile().getName()!="")
+        file= fc.getSelectedFile();
+        if (file!=null)
         {
-            jButton2.setEnabled(true);
+            String path= file.getAbsolutePath();
+            jLabel1.setText(path.length()>35? "... " + path.substring(path.length()-35): path);
+            if (file.getAbsoluteFile().getName()!=null && file.getAbsoluteFile().getName()!="")
+            {
+                jButton2.setEnabled(true);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -105,7 +109,18 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (mainWindow2==null)
         {
-            mainWindow2= new MainWindow2();
+            
+            // Parse the file, extract information, and build the class
+            FileProcessor fp= new FileProcessor();
+            fp.loadFile(file);
+            
+//            for (int i=50; i<700; i+=600)
+//            {
+//                circle.add(new Circle("test", i,50,50));
+//            }
+//
+//            line.add(new Line(circle.get(0), circle.get(1)));
+            mainWindow2= new MainWindow2(fp.getCircleObject(), fp.getLineObject());
         }
         
         mainWindow2.setVisible(true);
